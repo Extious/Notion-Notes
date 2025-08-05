@@ -4,8 +4,8 @@ const BLOG = {
   // Important page_id！！！Duplicate Template from  https://zhaozhan.notion.site/241c030b24dd80d08d3edcd1b7f4e371?v=241c030b24dd81649298000c3569d090&source=copy_link
   NOTION_PAGE_ID:
     process.env.NOTION_PAGE_ID ||
-    '241c030b24dd80d08d3edcd1b7f4e371',
-  THEME: process.env.NEXT_PUBLIC_THEME || 'hexo', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
+    '22cc030b24dd807cb21ee16277b3c9a0',
+  THEME: process.env.NEXT_PUBLIC_THEME || 'gitbook', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
   LANG: process.env.NEXT_PUBLIC_LANG || 'zh-CN', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
   SINCE: process.env.NEXT_PUBLIC_SINCE || 2025, // e.g if leave this empty, current year will be used.
 
