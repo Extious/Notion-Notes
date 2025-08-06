@@ -18,6 +18,9 @@ const NavPostList = props => {
   const { locale, currentSearch } = useGlobal()
   const router = useRouter()
 
+  // 添加加载状态
+  const [isLoading, setIsLoading] = useState(true)
+
   // 按分类将文章分组成文件夹
   const categoryFolders = groupArticles(filteredNavPages)
 
@@ -43,6 +46,13 @@ const NavPostList = props => {
     }, 500)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, filteredNavPages])
+
+  // 管理加载状态
+  useEffect(() => {
+    if (filteredNavPages) {
+      setIsLoading(false)
+    }
+  }, [filteredNavPages])
 
   // 折叠项切换，当折叠或展开数组时会调用
   const toggleItem = index => {
@@ -70,7 +80,20 @@ const NavPostList = props => {
     setExpandedGroups(newExpandedGroups)
   }
 
-  // 空数据返回
+  // 加载状态或空数据返回
+  if (isLoading) {
+    return (
+      <div className='flex w-full items-center justify-center min-h-screen mx-auto md:-mt-20'>
+        <div className='text-gray-500 dark:text-gray-300'>
+          <div className='flex items-center justify-center mb-2'>
+            <div className='animate-spin rounded-full h-6 w-6 border-b-2 border-gray-500 dark:border-gray-300'></div>
+          </div>
+          <p>{locale.COMMON.LOADING}</p>
+        </div>
+      </div>
+    )
+  }
+
   if (!categoryFolders || categoryFolders.length === 0) {
     // 空白内容
     return (
